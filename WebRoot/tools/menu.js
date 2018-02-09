@@ -3,5 +3,5 @@
  */
  
 $("#black").treeview({
-			url : "menu_showMenu.action"
-})
+			url : "menu_showMenu.action";
+});
