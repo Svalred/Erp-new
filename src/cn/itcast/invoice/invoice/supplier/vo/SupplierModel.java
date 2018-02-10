@@ -10,11 +10,12 @@ public class SupplierModel {
 	public static final Integer SUPPLIER_NEEDS_OF_YES = 1;
 	public static final Integer SUPPLIER_NEEDS_OF_NO = 0;
 	
-	public static final String SUPPLIER_NEEDS_OF_YES_VIEW = "送货";
-	public static final String SUPPLIER_NEEDS_OF_NO_VIEW = "自提";
+	public static final String SUPPLIER_NEEDS_OF_YES_VIEW = "é€�è´§";
+	public static final String SUPPLIER_NEEDS_OF_NO_VIEW = "è‡ªæ��";
 	
-	public static final Map<Integer, String> needsMap = new HashMap<Integer, String>();
+	public static final Map<Integer, String> needsMap;
 	static{
+		needsMap= new HashMap<Integer, String>();
 		needsMap.put(SUPPLIER_NEEDS_OF_YES, SUPPLIER_NEEDS_OF_YES_VIEW);
 		needsMap.put(SUPPLIER_NEEDS_OF_NO, SUPPLIER_NEEDS_OF_NO_VIEW);
 	}
@@ -29,7 +30,7 @@ public class SupplierModel {
 	
 	private String needsView;
 	
-	//关系
+	//å…³ç³»
 	private Set<GoodsTypeModel> gtms;
 	
 	public Set<GoodsTypeModel> getGtms() {
