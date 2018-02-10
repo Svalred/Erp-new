@@ -17,29 +17,35 @@ public class OrderModel {
 	public static final Integer ORDER_TYPE_OF_BUY_IN_STORE = 141;
 	public static final Integer ORDER_TYPE_OF_BUY_END = 199;
 	
-	public static final String ORDER_TYPE_OF_BUY_NO_CHECK_VIEW = "Ã¦Å“ÂªÃ¥Â®Â¡Ã¦Â Â¸";
-	public static final String ORDER_TYPE_OF_BUY_CHECK_NO_VIEW = "Ã©Â©Â³Ã¥â€ºÅ¾";
-	public static final String ORDER_TYPE_OF_BUY_CHECK_OK_VIEW = "Ã¤Â»Â»Ã¥Å Â¡Ã¦Å’â€¡Ã¦Â´Â¾Ã¤Â¸Â­";
-	public static final String ORDER_TYPE_OF_BUY_BUYING_VIEW = "Ã©â€¡â€¡Ã¨Â´Â­Ã¤Â¸Â­";
-	public static final String ORDER_TYPE_OF_BUY_IN_STORE_VIEW = "Ã¥â€¦Â¥Ã¥Âºâ€œÃ¤Â¸Â­";
-	public static final String ORDER_TYPE_OF_BUY_END_VIEW = "Ã¥Â·Â²Ã§Â»â€œÃ¥ï¿½â€¢";
+	public static final String ORDER_TYPE_OF_BUY_NO_CHECK_VIEW = "ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã‚Â Ã‚Â¸";
+	public static final String ORDER_TYPE_OF_BUY_CHECK_NO_VIEW = "ÃƒÂ©Ã‚Â©Ã‚Â³ÃƒÂ¥Ã¢â‚¬ÂºÃ…Â¾";
+	public static final String ORDER_TYPE_OF_BUY_CHECK_OK_VIEW = "ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¦Ã…â€™Ã¢â‚¬Â¡ÃƒÂ¦Ã‚Â´Ã‚Â¾ÃƒÂ¤Ã‚Â¸Ã‚Â­";
+	public static final String ORDER_TYPE_OF_BUY_BUYING_VIEW = "ÃƒÂ©Ã¢â‚¬Â¡Ã¢â‚¬Â¡ÃƒÂ¨Ã‚Â´Ã‚Â­ÃƒÂ¤Ã‚Â¸Ã‚Â­";
+	public static final String ORDER_TYPE_OF_BUY_IN_STORE_VIEW = "ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¥Ã‚ÂºÃ¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã‚Â­";
+	public static final String ORDER_TYPE_OF_BUY_END_VIEW = "ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ§Ã‚Â»Ã¢â‚¬Å“ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¢";
 	
-	public static final Map<Integer, String> orderTypeMap = new HashMap<Integer, String>();
-	public static final Map<Integer, String> buyTypeMap = new TreeMap<Integer, String>();
-	public static final Map<Integer, String> saleTypeMap = new TreeMap<Integer, String>();
-	private static final Map<Integer, String> typeMap = new TreeMap<Integer, String>();
+	public static Map<Integer, String> orderTypeMap=null;
+	public static  Map<Integer, String> buyTypeMap=null;
+	public static Map<Integer, String> saleTypeMap=null;
+	private static Map<Integer, String> typeMap=null;
 	
 	public static final Integer ORDER_ORDERTYPE_OF_BUY = 1;
 	public static final Integer ORDER_ORDERTYPE_OF_SALE = 2;
 	public static final Integer ORDER_ORDERTYPE_OF_RETURN_BUY = 3;
 	public static final Integer ORDER_ORDERTYPE_OF_RETURN_SALE = 4;
 	
-	public static final String ORDER_ORDERTYPE_OF_BUY_VIEW = "Ã©â€¡â€¡Ã¨Â´Â­";
-	public static final String ORDER_ORDERTYPE_OF_SALE_VIEW = "Ã©â€�â‚¬Ã¥â€�Â®";
-	public static final String ORDER_ORDERTYPE_OF_RETURN_BUY_VIEW = "Ã©â€¡â€¡Ã¨Â´Â­Ã©â‚¬â‚¬Ã¨Â´Â§";
-	public static final String ORDER_ORDERTYPE_OF_RETURN_SALE_VIEW = "Ã©â€�â‚¬Ã¥â€�Â®Ã©â‚¬â‚¬Ã¨Â´Â§";
+	public static final String ORDER_ORDERTYPE_OF_BUY_VIEW = "ÃƒÂ©Ã¢â‚¬Â¡Ã¢â‚¬Â¡ÃƒÂ¨Ã‚Â´Ã‚Â­";
+	public static final String ORDER_ORDERTYPE_OF_SALE_VIEW = "ÃƒÂ©Ã¢â‚¬ï¿½Ã¢â€šÂ¬ÃƒÂ¥Ã¢â‚¬ï¿½Ã‚Â®";
+	public static final String ORDER_ORDERTYPE_OF_RETURN_BUY_VIEW = "ÃƒÂ©Ã¢â‚¬Â¡Ã¢â‚¬Â¡ÃƒÂ¨Ã‚Â´Ã‚Â­ÃƒÂ©Ã¢â€šÂ¬Ã¢â€šÂ¬ÃƒÂ¨Ã‚Â´Ã‚Â§";
+	public static final String ORDER_ORDERTYPE_OF_RETURN_SALE_VIEW = "ÃƒÂ©Ã¢â‚¬ï¿½Ã¢â€šÂ¬ÃƒÂ¥Ã¢â‚¬ï¿½Ã‚Â®ÃƒÂ©Ã¢â€šÂ¬Ã¢â€šÂ¬ÃƒÂ¨Ã‚Â´Ã‚Â§";
 	
 	static{
+		
+		orderTypeMap = new HashMap<Integer, String>();
+		buyTypeMap = new TreeMap<Integer, String>();
+		saleTypeMap = new TreeMap<Integer, String>();
+		typeMap = new TreeMap<Integer, String>();
+		
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_BUY,ORDER_ORDERTYPE_OF_BUY_VIEW);
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_SALE,ORDER_ORDERTYPE_OF_SALE_VIEW);
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_RETURN_BUY,ORDER_ORDERTYPE_OF_RETURN_BUY_VIEW);
@@ -55,22 +61,22 @@ public class OrderModel {
 		typeMap.putAll(buyTypeMap);
 	}
 	
-	//typeÃ§Å Â¶Ã¦â‚¬ï¿½Ã§Â±Â»Ã¥Å¾â€¹
+	//typeÃƒÂ§Ã…Â Ã‚Â¶ÃƒÂ¦Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ§Ã‚Â±Ã‚Â»ÃƒÂ¥Ã…Â¾Ã¢â‚¬Â¹
 	/*
-	Ã§â€�Â³Ã¨Â¯Â·Ã¦Å“ÂªÃ¥Â®Â¡Ã¦â€°Â¹					Ã¦Å“ÂªÃ¥Â®Â¡Ã¦Â Â¸			111
-	Ã§â€�Â³Ã¨Â¯Â·Ã¥Â·Â²Ã¥Â®Â¡Ã¦â€°Â¹Ã©Â©Â³Ã¥â€ºÅ¾				Ã©Â©Â³Ã¥â€ºÅ¾				120
-	Ã§â€�Â³Ã¨Â¯Â·Ã¥Â·Â²Ã¥Â®Â¡Ã¦â€°Â¹Ã©â‚¬Å¡Ã¨Â¿â€¡/Ã¦Å“ÂªÃ¦Å’â€¡Ã¦Â´Â¾Ã¤Â»Â»Ã¥Å Â¡Ã¤ÂºÂº	Ã¤Â»Â»Ã¥Å Â¡Ã¦Å’â€¡Ã¦Â´Â¾Ã¤Â¸Â­			121
-	Ã¥Â·Â²Ã¦Å’â€¡Ã¦Â´Â¾Ã¤Â»Â»Ã¥Å Â¡Ã¤ÂºÂº/Ã¤Â»Â»Ã¥Å Â¡Ã¦Å“ÂªÃ¥Â®Å’Ã¦Ë†ï¿½		Ã©â€¡â€¡Ã¨Â´Â­Ã¤Â¸Â­			131
-	Ã¤Â»Â»Ã¥Å Â¡Ã¥Â·Â²Ã§Â»ï¿½Ã¥Â®Å’Ã¦Ë†ï¿½/Ã¨Â®Â¢Ã¥ï¿½â€¢Ã¦Å“ÂªÃ¥â€¦Â¥Ã¥Âºâ€œ		Ã¥â€¦Â¥Ã¥Âºâ€œÃ¤Â¸Â­			141
-	Ã¨Â®Â¢Ã¥ï¿½â€¢Ã¥â€¦Â¥Ã¥Âºâ€œÃ¥Â®Å’Ã¦Â¯â€¢				Ã¥Â·Â²Ã§Â»â€œÃ¥ï¿½â€¢			199
+	ÃƒÂ§Ã¢â‚¬ï¿½Ã‚Â³ÃƒÂ¨Ã‚Â¯Ã‚Â·ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã¢â‚¬Â°Ã‚Â¹					ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã‚Â Ã‚Â¸			111
+	ÃƒÂ§Ã¢â‚¬ï¿½Ã‚Â³ÃƒÂ¨Ã‚Â¯Ã‚Â·ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã¢â‚¬Â°Ã‚Â¹ÃƒÂ©Ã‚Â©Ã‚Â³ÃƒÂ¥Ã¢â‚¬ÂºÃ…Â¾				ÃƒÂ©Ã‚Â©Ã‚Â³ÃƒÂ¥Ã¢â‚¬ÂºÃ…Â¾				120
+	ÃƒÂ§Ã¢â‚¬ï¿½Ã‚Â³ÃƒÂ¨Ã‚Â¯Ã‚Â·ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã¢â‚¬Â°Ã‚Â¹ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¨Ã‚Â¿Ã¢â‚¬Â¡/ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¦Ã…â€™Ã¢â‚¬Â¡ÃƒÂ¦Ã‚Â´Ã‚Â¾ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¤Ã‚ÂºÃ‚Âº	ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¦Ã…â€™Ã¢â‚¬Â¡ÃƒÂ¦Ã‚Â´Ã‚Â¾ÃƒÂ¤Ã‚Â¸Ã‚Â­			121
+	ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ¦Ã…â€™Ã¢â‚¬Â¡ÃƒÂ¦Ã‚Â´Ã‚Â¾ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¤Ã‚ÂºÃ‚Âº/ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã‚Â®Ã…â€™ÃƒÂ¦Ã‹â€ Ã¯Â¿Â½		ÃƒÂ©Ã¢â‚¬Â¡Ã¢â‚¬Â¡ÃƒÂ¨Ã‚Â´Ã‚Â­ÃƒÂ¤Ã‚Â¸Ã‚Â­			131
+	ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ§Ã‚Â»Ã¯Â¿Â½ÃƒÂ¥Ã‚Â®Ã…â€™ÃƒÂ¦Ã‹â€ Ã¯Â¿Â½/ÃƒÂ¨Ã‚Â®Ã‚Â¢ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¢ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¥Ã‚ÂºÃ¢â‚¬Å“		ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¥Ã‚ÂºÃ¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã‚Â­			141
+	ÃƒÂ¨Ã‚Â®Ã‚Â¢ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¢ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¥Ã‚ÂºÃ¢â‚¬Å“ÃƒÂ¥Ã‚Â®Ã…â€™ÃƒÂ¦Ã‚Â¯Ã¢â‚¬Â¢				ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ§Ã‚Â»Ã¢â‚¬Å“ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¢			199
 	*/
 	/*
-	211	Ã¦Å“ÂªÃ¥Â®Â¡Ã¦Â Â¸									
-	220	Ã©Â©Â³Ã¥â€ºÅ¾
-	221	Ã¤Â»Â»Ã¥Å Â¡Ã¦Å’â€¡Ã¦Â´Â¾Ã¤Â¸Â­
-	231	Ã¥â€¡ÂºÃ¥Âºâ€œÃ¤Â¸Â­
-	241	Ã©â‚¬ï¿½Ã¨Â´Â§Ã¤Â¸Â­
-	299	Ã¥Â·Â²Ã§Â»â€œÃ¥ï¿½â€¢
+	211	ÃƒÂ¦Ã…â€œÃ‚ÂªÃƒÂ¥Ã‚Â®Ã‚Â¡ÃƒÂ¦Ã‚Â Ã‚Â¸									
+	220	ÃƒÂ©Ã‚Â©Ã‚Â³ÃƒÂ¥Ã¢â‚¬ÂºÃ…Â¾
+	221	ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ¦Ã…â€™Ã¢â‚¬Â¡ÃƒÂ¦Ã‚Â´Ã‚Â¾ÃƒÂ¤Ã‚Â¸Ã‚Â­
+	231	ÃƒÂ¥Ã¢â‚¬Â¡Ã‚ÂºÃƒÂ¥Ã‚ÂºÃ¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã‚Â­
+	241	ÃƒÂ©Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¨Ã‚Â´Ã‚Â§ÃƒÂ¤Ã‚Â¸Ã‚Â­
+	299	ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ§Ã‚Â»Ã¢â‚¬Å“ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¢
 	*/
 	
 	private Long uuid;
@@ -87,7 +93,7 @@ public class OrderModel {
 	private Long checkTime;
 	private Long completeTime;
 	
-	//Ã¨Â§â€ Ã¥â€ºÂ¾Ã¥â‚¬Â¼
+	//ÃƒÂ¨Ã‚Â§Ã¢â‚¬Â ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â¾ÃƒÂ¥Ã¢â€šÂ¬Ã‚Â¼
 	private String totalPriceView;
 	private String createTimeView;
 	private String checkTimeView;
@@ -95,7 +101,7 @@ public class OrderModel {
 	private String orderTypeView;
 	private String typeView;
 	
-	//Ã¥â€¦Â³Ã§Â³Â»
+	//ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â³ÃƒÂ§Ã‚Â³Ã‚Â»
 	private EmpModel creater;
 	private EmpModel checker;
 	private EmpModel completer;
