@@ -3,7 +3,6 @@ package cn.itcast.invoice.auth.emp.vo;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import cn.itcast.invoice.auth.dep.vo.DepModel;
 import cn.itcast.invoice.auth.role.vo.RoleModel;
 import cn.itcast.invoice.util.format.FormatUtil;
@@ -12,10 +11,10 @@ public class EmpModel {
 	public static final Integer EMP_GENDER_OF_MAN = 1;
 	public static final Integer EMP_GENDER_OF_WOMAN = 0;
 	
-	public static final String EMP_GENDER_OF_MAN_VIEW = "ç”·";
-	public static final String EMP_GENDER_OF_WOMAN_VIEW = "å¥³";
+	public static final String EMP_GENDER_OF_MAN_VIEW = "Ã§â€�Â·";
+	public static final String EMP_GENDER_OF_WOMAN_VIEW = "Ã¥Â¥Â³";
+	public static Map<Integer, String> genderMap;
 	
-	public static Map<Integer, String> genderMap = new HashMap<Integer, String>();
 	
 	static{
 		genderMap.put(EMP_GENDER_OF_MAN, EMP_GENDER_OF_MAN_VIEW);
@@ -23,11 +22,11 @@ public class EmpModel {
 	}
 	
 	private Long uuid;
-	//ç™»é™†ç”¨æˆ·å��
+	//Ã§â„¢Â»Ã©â„¢â€ Ã§â€�Â¨Ã¦Ë†Â·Ã¥ï¿½ï¿½
 	private String userName;
-	//å¯†ç �
+	//Ã¥Â¯â€ Ã§Â ï¿½
 	private String pwd;
-	//çœŸå®žå§“å��
+	//Ã§Å“Å¸Ã¥Â®Å¾Ã¥Â§â€œÃ¥ï¿½ï¿½
 	private String name;
 	
 	private String email;
@@ -41,16 +40,16 @@ public class EmpModel {
 	private Integer gender;
 	private Integer loginTimes;
 	
-	//è§†å›¾å€¼
+	//Ã¨Â§â€ Ã¥â€ºÂ¾Ã¥â‚¬Â¼
 	private String birthdayView;
 	private String lastLoginTimeView;
 	private String genderView;
 	
-	//å…³ç³»
+	//Ã¥â€¦Â³Ã§Â³Â»
 	private DepModel dm;
 	private Set<RoleModel> roles;
 	
-	//æ�ƒé™�æ ¡éªŒè¾…åŠ©å­—æ®µ
+	//Ã¦ï¿½Æ’Ã©â„¢ï¿½Ã¦Â Â¡Ã©ÂªÅ’Ã¨Â¾â€¦Ã¥Å Â©Ã¥Â­â€”Ã¦Â®Âµ
 	private String resValue;
 	
 	public String getResValue() {
@@ -93,7 +92,10 @@ public class EmpModel {
 		return toReturn;
 	}
 	
-
+	public void fill() {
+			genderMap = new HashMap<Integer, String>();		
+	}
+	
 	public void setUuid(Long uuid) {
 		this.uuid = uuid;
 	}
