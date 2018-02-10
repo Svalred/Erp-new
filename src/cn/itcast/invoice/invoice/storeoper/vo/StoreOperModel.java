@@ -13,12 +13,13 @@ public class StoreOperModel {
 	public static final Integer STOREOPER_TYPE_OF_IN = 1;
 	public static final Integer STOREOPER_TYPE_OF_OUT = 2;
 	
-	public static final String STOREOPER_TYPE_OF_IN_VIEW = "入库";
-	public static final String STOREOPER_TYPE_OF_OUT_VIEW = "出库";
+	public static final String STOREOPER_TYPE_OF_IN_VIEW = "å…¥åº“";
+	public static final String STOREOPER_TYPE_OF_OUT_VIEW = "å‡ºåº“";
 	
-	public static final Map<Integer, String> typeMap = new HashMap<Integer, String>();
+	public static final Map<Integer, String> typeMap;
 	
 	static{
+		typeMap = new HashMap<Integer, String>();
 		typeMap.put(STOREOPER_TYPE_OF_IN, STOREOPER_TYPE_OF_IN_VIEW);
 		typeMap.put(STOREOPER_TYPE_OF_OUT, STOREOPER_TYPE_OF_OUT_VIEW);
 	}
