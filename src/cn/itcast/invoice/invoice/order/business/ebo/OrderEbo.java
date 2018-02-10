@@ -170,8 +170,10 @@ public class OrderEbo implements OrderEbi{
 			//å…±è®¡4ç§�çŠ¶æ€�
 			};
 	
-	public static final Set<Integer> taskTypesSet = new HashSet<Integer>();
+	public static Set<Integer> taskTypesSet=null;
+	
 	static{
+		taskTypesSet = new HashSet<Integer>();
 		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
 		//taskTypesSet.add(OrderModel.);
 		//taskTypesSet.add(OrderModel.);
@@ -179,6 +181,7 @@ public class OrderEbo implements OrderEbi{
 	}
 	
 	public void assignTask(OrderModel om) {
+				
 		OrderModel temp = orderDao.get(om.getUuid());
 		if(!Arrays.asList(taskTypes2).contains(temp.getType())){
 			throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
