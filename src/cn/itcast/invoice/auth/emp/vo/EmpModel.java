@@ -1,32 +1,52 @@
 package cn.itcast.invoice.auth.emp.vo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
 import cn.itcast.invoice.auth.dep.vo.DepModel;
 import cn.itcast.invoice.auth.role.vo.RoleModel;
 import cn.itcast.invoice.util.format.FormatUtil;
-
-public class EmpModel {
+/**
+ * this class implements Serializable
+ *
+ */
+public class EmpModel implements Serializable{
+	/**
+	 * public field
+	 */
 	public static final Integer EMP_GENDER_OF_MAN = 1;
+	/**
+	 * public field
+	 */
 	public static final Integer EMP_GENDER_OF_WOMAN = 0;
+	/**
+	 * public field
+	 */
+	public static final String EMP_GENDER_OF_MAN_VIEW = "ÃƒÆ’Ã‚Â§ÃƒÂ¢Ã¢â€šÂ¬Ã¯Â¿Â½Ãƒâ€šÃ‚Â·";
+	/**
+	 * public field
+	 */
+	public static final String EMP_GENDER_OF_WOMAN_VIEW = "ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¥Ãƒâ€šÃ‚Â³";
 	
-	public static final String EMP_GENDER_OF_MAN_VIEW = "Ã§â€�Â·";
-	public static final String EMP_GENDER_OF_WOMAN_VIEW = "Ã¥Â¥Â³";
+	/**
+	 * public field
+	 */
 	public static Map<Integer, String> genderMap;
 	
-	
 	static{
+		genderMap = new HashMap<Integer, String>();
 		genderMap.put(EMP_GENDER_OF_MAN, EMP_GENDER_OF_MAN_VIEW);
 		genderMap.put(EMP_GENDER_OF_WOMAN, EMP_GENDER_OF_WOMAN_VIEW);
 	}
 	
-	private Long uuid;
-	//Ã§â„¢Â»Ã©â„¢â€ Ã§â€�Â¨Ã¦Ë†Â·Ã¥ï¿½ï¿½
+	private Long segreto;
+	//ÃƒÆ’Ã‚Â§ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â§ÃƒÂ¢Ã¢â€šÂ¬Ã¯Â¿Â½Ãƒâ€šÃ‚Â¨ÃƒÆ’Ã‚Â¦Ãƒâ€¹Ã¢â‚¬Â Ãƒâ€šÃ‚Â·ÃƒÆ’Ã‚Â¥ÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½
 	private String userName;
-	//Ã¥Â¯â€ Ã§Â ï¿½
+	//ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¯ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â§Ãƒâ€š ÃƒÂ¯Ã‚Â¿Ã‚Â½
 	private String pwd;
-	//Ã§Å“Å¸Ã¥Â®Å¾Ã¥Â§â€œÃ¥ï¿½ï¿½
+	//ÃƒÆ’Ã‚Â§Ãƒâ€¦Ã¢â‚¬Å“Ãƒâ€¦Ã‚Â¸ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â®Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â§ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¥ÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½
 	private String name;
 	
 	private String email;
@@ -40,36 +60,51 @@ public class EmpModel {
 	private Integer gender;
 	private Integer loginTimes;
 	
-	//Ã¨Â§â€ Ã¥â€ºÂ¾Ã¥â‚¬Â¼
+	//ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â§ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â¥ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂºÃƒâ€šÃ‚Â¾ÃƒÆ’Ã‚Â¥ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¼
 	private String birthdayView;
 	private String lastLoginTimeView;
 	private String genderView;
 	
-	//Ã¥â€¦Â³Ã§Â³Â»
+	//ÃƒÆ’Ã‚Â¥ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦Ãƒâ€šÃ‚Â³ÃƒÆ’Ã‚Â§Ãƒâ€šÃ‚Â³Ãƒâ€šÃ‚Â»
 	private DepModel dm;
 	private Set<RoleModel> roles;
 	
-	//Ã¦ï¿½Æ’Ã©â„¢ï¿½Ã¦Â Â¡Ã©ÂªÅ’Ã¨Â¾â€¦Ã¥Å Â©Ã¥Â­â€”Ã¦Â®Âµ
+	//ÃƒÆ’Ã‚Â¦ÃƒÂ¯Ã‚Â¿Ã‚Â½Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÆ’Ã‚Â¦Ãƒâ€š Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã‚Â©Ãƒâ€šÃ‚ÂªÃƒâ€¦Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¥Ãƒâ€¦ Ãƒâ€šÃ‚Â©ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â­ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ï¿½ÃƒÆ’Ã‚Â¦Ãƒâ€šÃ‚Â®Ãƒâ€šÃ‚Âµ
 	private String resValue;
 	
+	/**
+	 * public field
+	 */
 	public String getResValue() {
 		return resValue;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setResValue(String resValue) {
 		this.resValue = resValue;
 	}
 
+	/**
+	 * public field
+	 */
 	public Set<RoleModel> getRoles() {
 		return roles;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setRoles(Set<RoleModel> roles) {
 		this.roles = roles;
 	}
 
+	/**
+	 * public field
+	 */
 	public Long getUuid() {
-		return uuid;
+		return segreto;
 	}
 
 	/**
@@ -92,18 +127,24 @@ public class EmpModel {
 		return toReturn;
 	}
 	
-	public void fill() {
-			genderMap = new HashMap<Integer, String>();		
-	}
-	
-	public void setUuid(Long uuid) {
-		this.uuid = uuid;
+
+	/**
+	 * public field
+	 */
+	public void setSegreto(Long segreto) {
+		this.segreto = segreto;
 	}
 
+	/**
+	 * public field
+	 */
 	public String getUserName() {
 		return userName;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -112,6 +153,9 @@ public class EmpModel {
 		return pwd;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
@@ -141,70 +185,118 @@ public class EmpModel {
 		return toReturn;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 
+	/**
+	 * public field
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setTele(String tele) {
 		this.tele = tele;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	/**
+	 * public field
+	 */
 	public String getLastLoginIp() {
 		return lastLoginIp;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setLastLoginIp(String lastLoginIp) {
 		this.lastLoginIp = lastLoginIp;
 	}
 
+	/**
+	 * public field
+	 */
 	public Long getBirthday() {
 		return birthday;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setBirthday(Long birthday) {
 		this.birthday = birthday;
 		this.birthdayView = FormatUtil.formatDate(birthday);
 	}
 
+	/**
+	 * public field
+	 */
 	public Long getLastLoginTime() {
 		return lastLoginTime;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setLastLoginTime(Long lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 		this.lastLoginTimeView = FormatUtil.formatDate(lastLoginTime);
 	}
 
+	/**
+	 * public field
+	 */
 	public Integer getGender() {
 		return gender;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setGender(Integer gender) {
 		this.gender = gender;
 		this.genderView = genderMap.get(gender);
 	}
 
+	/**
+	 * public field
+	 */
 	public Integer getLoginTimes() {
 		return loginTimes;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setLoginTimes(Integer loginTimes) {
 		this.loginTimes = loginTimes;
 	}
 
+	/**
+	 * public field
+	 */
 	public DepModel getDm() {
 		return dm;
 	}
 
+	/**
+	 * public field
+	 */
 	public void setDm(DepModel dm) {
 		this.dm = dm;
 	}
