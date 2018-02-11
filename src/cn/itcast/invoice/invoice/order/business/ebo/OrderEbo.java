@@ -2,7 +2,6 @@ package cn.itcast.invoice.invoice.order.business.ebo;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,47 +16,87 @@ import cn.itcast.invoice.invoice.order.vo.OrderQueryModel;
 import cn.itcast.invoice.util.base.BaseQueryModel;
 import cn.itcast.invoice.util.exception.AppException;
 import cn.itcast.invoice.util.format.MD5Utils;
-
+/**
+ * this class implements OrderEbi
+ *
+ */
 public class OrderEbo implements OrderEbi{
 	private OrderDao orderDao;
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}
-
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	
 	public void save(OrderModel om) {
 		orderDao.save(om);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void delete(OrderModel om) {
 		orderDao.delete(om);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void update(OrderModel om) {
 		orderDao.update(om);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public OrderModel get(Serializable uuid) {
 		return orderDao.get(uuid);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAll() {
 		return orderDao.getAll();
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAll(BaseQueryModel qm, Integer pageNum,Integer pageCount) {
 		return orderDao.getAll(qm,pageNum,pageCount);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public Integer getCount(BaseQueryModel qm) {
 		return orderDao.getCount(qm);
 	}
 	
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void save(EmpModel em,OrderModel om, Long[] goodsUuids, Integer[] nums,Double[] prices) {
 		//å°†è®¢å�•ä¿¡æ�¯ç»„ç»‡å¥½ï¼Œä¿�å­˜
 		//omä¸­ä¿�å­˜æœ‰å¯¹åº”ä¾›åº”å•†çš„uuid
 		//è®¾ç½®è®¢å�•å�·:ç³»ç»Ÿæ—¶é—´+ç™»é™†äººuuid
 		String orderNum = System.currentTimeMillis()+""+em.getUuid();
-		om.setOrderNum(MD5Utils.md5(orderNum));
+		om.setOrderNum(MD5Utils.sha256(orderNum));
 		//è®¾ç½®è®¢å�•ç±»åˆ«
 		om.setOrderType(OrderModel.ORDER_ORDERTYPE_OF_BUY);
 		//è®¾ç½®è®¢å�•çŠ¶æ€�
@@ -88,7 +127,7 @@ public class OrderEbo implements OrderEbi{
 			odm.setPrice(price);
 			
 			
-			gm.setUuid(goodsUuid);
+			gm.setSegreto(goodsUuid);
 			odm.setGm(gm);
 			//ç»‘å®šæ˜Žç»†åˆ°è®¢å�•çš„å…³ç³»
 			odm.setOm(om);
@@ -114,6 +153,10 @@ public class OrderEbo implements OrderEbi{
 			OrderModel.ORDER_TYPE_OF_BUY_NO_CHECK,
 			//OrderModel.ORDER_TYPE_OF_BUY_RETURN_NO_CHECK
 			};
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAllNoCheckOrder(OrderQueryModel oqm,Integer pageNum, Integer pageCount) {
 			//é‡‡è´­æœªå®¡æ ¸
 			//é‡‡è´­é€€è´§æœªå®¡æ ¸
@@ -122,10 +165,18 @@ public class OrderEbo implements OrderEbi{
 		return orderDao.getAllByTypes(oqm,pageNum,pageCount,buyCheckTypes);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public Integer getCountByTypes(OrderQueryModel oqm) {
 		return orderDao.getCountByTypes(oqm,buyCheckTypes);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void buyCheckPass(Long uuid,EmpModel em) {
 		//å¦‚æžœè¯¥è®¢å�•æ²¡æœ‰å®¡æ ¸
 		//ä¿®æ”¹çŠ¶æ€�å°†æœªå®¡æ ¸çŠ¶æ€�ä¿®æ”¹ä¸ºå®¡æ ¸é€šè¿‡çŠ¶æ€�	ORDER_TYPE_OF_BUY_CHECK_PASS
@@ -133,7 +184,11 @@ public class OrderEbo implements OrderEbi{
 		OrderModel om = orderDao.get(uuid);
 		//é€»è¾‘åˆ¤å®š
 		if(!Arrays.asList(buyCheckTypes).contains(om.getType())){
-			throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			try {
+				throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			} catch (AppException e) {
+				System.out.println("Something was wrong!");
+			}
 		}
 		om.setType(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
 		//è°�ä»€ä¹ˆæ—¶é—´å®¡æ ¸çš„ï¼Ÿ
@@ -141,16 +196,28 @@ public class OrderEbo implements OrderEbi{
 		om.setChecker(em);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void buyCheckNoPass(Long uuid,EmpModel em) {
 		OrderModel om = orderDao.get(uuid);
 		//é€»è¾‘åˆ¤å®š
 		if(!Arrays.asList(buyCheckTypes).contains(om.getType())){
-			throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			try {
+				throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			} catch (AppException e) {
+				System.out.println("Something was wrong!");
+			}
 		}
 		om.setType(OrderModel.ORDER_TYPE_OF_BUY_CHECK_NO_PASS);
 		om.setCheckTime(System.currentTimeMillis());
 		om.setChecker(em);
 	}
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	private Integer[] taskTypes = {
 			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
 			OrderModel.ORDER_TYPE_OF_BUY_BUYING,
@@ -159,32 +226,49 @@ public class OrderEbo implements OrderEbi{
 			//ç¼ºå°‘12ç§�
 			//å…±è®¡16ç§�çŠ¶æ€�
 			};
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAllTasks(OrderQueryModel oqm, Integer pageNum,Integer pageCount) {
 		//èŽ·å�–çš„æ•°æ�®æœ‰å“ªäº›ï¼Ÿæ— è®ºä½•ç§�ç±»åˆ«çš„è®¢å�•ï¼Œå�ªè¦�æ˜¯å®¡æ ¸é€šè¿‡å�Žï¼Œæ‰€æœ‰çŠ¶æ€�å�‡æ˜¾ç¤º
 		return orderDao.getAllByTypes(oqm, pageNum, pageCount, taskTypes);
 	}
 	
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public static Integer[] taskTypes2 = {
 			OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS,
 			//ç¼ºå°‘3ç§�
 			//å…±è®¡4ç§�çŠ¶æ€�
 			};
 	
-	public static Set<Integer> taskTypesSet=null;
-	
+	/**
+	 * this public element is a public element
+	 *
+	 */
+	public static final Set<Integer> taskTypesSet = new HashSet<Integer>();
 	static{
-		taskTypesSet = new HashSet<Integer>();
 		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
 		//taskTypesSet.add(OrderModel.);
 		//taskTypesSet.add(OrderModel.);
 		//taskTypesSet.add(OrderModel.);
 	}
 	
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void assignTask(OrderModel om) {
-				
 		OrderModel temp = orderDao.get(om.getUuid());
 		if(!Arrays.asList(taskTypes2).contains(temp.getType())){
-			throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			try {
+				throw new AppException("å¯¹ä¸�èµ·,è¯·ä¸�è¦�è¿›è¡Œé�žæ³•æ“�ä½œï¼�");
+			} catch (AppException e) {
+				System.out.println("Something was wrong!");
+			}
 		}
 		//å½“å‰�ä»»åŠ¡åˆ†é…�å®Œæ¯•å�Žï¼Œåˆ‡æ�¢çŠ¶æ€�ä¸ºæ­£åœ¨é‡‡è´­
 		//é‡‡è´­å’Œé‡‡è´­é€€è´§éƒ½å½’å�Œä¸€ä¸ªäººå®¡æ‰¹
@@ -197,11 +281,19 @@ public class OrderEbo implements OrderEbi{
 		temp.setCompleter(om.getCompleter());
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAllByCompleter(OrderQueryModel oqm,Integer pageNum, Integer pageCount, EmpModel login) {
 		oqm.setCompleter(login);
 		return orderDao.getAll(oqm, pageNum, pageCount);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void endTask(Long uuid) {
 		OrderModel om = orderDao.get(uuid);
 		/*
@@ -213,10 +305,18 @@ public class OrderEbo implements OrderEbi{
 		om.setType(OrderModel.ORDER_TYPE_OF_BUY_IN_STORE);
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	private Integer[] inTypes = {
 			OrderModel.ORDER_TYPE_OF_BUY_IN_STORE,
 			//ç¼ºå°‘1ç§�
 			};
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderModel> getAllNotIn(OrderQueryModel oqm, Integer pageNum,Integer pageCount) {
 		//
 		return orderDao.getAllByTypes(oqm, pageNum, pageCount, inTypes);
