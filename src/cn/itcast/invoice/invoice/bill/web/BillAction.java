@@ -13,21 +13,40 @@ import cn.itcast.invoice.invoice.supplier.business.ebi.SupplierEbi;
 import cn.itcast.invoice.invoice.supplier.vo.SupplierModel;
 import cn.itcast.invoice.util.base.BaseAction;
 import cn.itcast.invoice.util.format.FormatUtil;
-
+/**
+ * this class extends BaseAction
+ *
+ */
 public class BillAction extends BaseAction{
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public BillQueryModel bqm = new BillQueryModel();
 
 	private BillEbi billEbi;
 	private SupplierEbi supplierEbi;
 	
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void setSupplierEbi(SupplierEbi supplierEbi) {
 		this.supplierEbi = supplierEbi;
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void setBillEbi(BillEbi billEbi) {
 		this.billEbi = billEbi;
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public String buyBill(){
 		/*
 		select 
@@ -42,7 +61,7 @@ public class BillAction extends BaseAction{
 		group by
 			od.goodsUuid 
 		*/
-		//获取采购报表数据
+		//Ã¨Å½Â·Ã¥ï¿½â€“Ã©â€¡â€¡Ã¨Â´Â­Ã¦Å Â¥Ã¨Â¡Â¨Ã¦â€¢Â°Ã¦ï¿½Â®
 		List<Object[]> billList = billEbi.getBillByGoods(bqm);
 		/*
 		for(Object[] objs:billList){
@@ -53,45 +72,69 @@ public class BillAction extends BaseAction{
 		}
 		*/
 		put("billList",billList);
-		//加载所有供应商数据
+		//Ã¥Å Â Ã¨Â½Â½Ã¦â€°â‚¬Ã¦Å“â€°Ã¤Â¾â€ºÃ¥Âºâ€�Ã¥â€¢â€ Ã¦â€¢Â°Ã¦ï¿½Â®
 		List<SupplierModel> supplierList = supplierEbi.getAll();
 		put("supplierList",supplierList);
 		return "buyBill";
 	}
 	private List<OrderDetailModel> odmList;
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public List<OrderDetailModel> getOdmList() {
 		return odmList;
 	}
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public String ajaxBillDetailByGoods(){
 		odmList = billEbi.getBillDetailByGoods(bqm);
 		return "ajaxBillDetailByGoods";
 	}
-	//获取饼图
+	//Ã¨Å½Â·Ã¥ï¿½â€“Ã©Â¥Â¼Ã¥â€ºÂ¾
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public void billForPie() throws IOException{
-		//1.获取jfreechart对象，将其装入流对象
-		//2.传递到后台一个流对象，在后台完成jfreechart对象转入流的操作
-		//准备数据bqm->list
+		//1.Ã¨Å½Â·Ã¥ï¿½â€“jfreechartÃ¥Â¯Â¹Ã¨Â±Â¡Ã¯Â¼Å’Ã¥Â°â€ Ã¥â€¦Â¶Ã¨Â£â€¦Ã¥â€¦Â¥Ã¦Âµï¿½Ã¥Â¯Â¹Ã¨Â±Â¡
+		//2.Ã¤Â¼Â Ã©â‚¬â€™Ã¥Ë†Â°Ã¥ï¿½Å½Ã¥ï¿½Â°Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¦Âµï¿½Ã¥Â¯Â¹Ã¨Â±Â¡Ã¯Â¼Å’Ã¥Å“Â¨Ã¥ï¿½Å½Ã¥ï¿½Â°Ã¥Â®Å’Ã¦Ë†ï¿½jfreechartÃ¥Â¯Â¹Ã¨Â±Â¡Ã¨Â½Â¬Ã¥â€¦Â¥Ã¦Âµï¿½Ã§Å¡â€žÃ¦â€œï¿½Ã¤Â½Å“
+		//Ã¥â€¡â€ Ã¥Â¤â€¡Ã¦â€¢Â°Ã¦ï¿½Â®bqm->list
 		List<Object[]> billList = billEbi.getBillByGoods(bqm);
-		//准备一个流对象
+		//Ã¥â€¡â€ Ã¥Â¤â€¡Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¦Âµï¿½Ã¥Â¯Â¹Ã¨Â±Â¡
 		OutputStream os = getResponse().getOutputStream();
-		//传递到后台，将jfreechart转换到流中
+		//Ã¤Â¼Â Ã©â‚¬â€™Ã¥Ë†Â°Ã¥ï¿½Å½Ã¥ï¿½Â°Ã¯Â¼Å’Ã¥Â°â€ jfreechartÃ¨Â½Â¬Ã¦ï¿½Â¢Ã¥Ë†Â°Ã¦Âµï¿½Ã¤Â¸Â­
 		billEbi.getBillForPie(os,billList);
-		//刷新流，将图像送回页面
+		//Ã¥Ë†Â·Ã¦â€“Â°Ã¦Âµï¿½Ã¯Â¼Å’Ã¥Â°â€ Ã¥â€ºÂ¾Ã¥Æ’ï¿½Ã©â‚¬ï¿½Ã¥â€ºÅ¾Ã©Â¡ÂµÃ©ï¿½Â¢
 		os.flush();
 	}
-	//下载Excel报表
+	//Ã¤Â¸â€¹Ã¨Â½Â½ExcelÃ¦Å Â¥Ã¨Â¡Â¨
 	private InputStream downloadExcel;
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public InputStream getDownloadExcel() {
 		return downloadExcel;
 	}
 	private String xlsName;
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public String getXlsName() throws UnsupportedEncodingException {
 		System.out.println(xlsName);
 		return new String(xlsName.getBytes("UTF-8"),"ISO8859-1");
 	}
 
+	/**
+	 * this public element is a public element
+	 *
+	 */
 	public String downloadExcelBill() throws Exception{
-		xlsName = "货物统计报表［"+FormatUtil.formatDate(System.currentTimeMillis())+"］.xls";
+		xlsName = "Ã¨Â´Â§Ã§â€°Â©Ã§Â»Å¸Ã¨Â®Â¡Ã¦Å Â¥Ã¨Â¡Â¨Ã¯Â¼Â»"+FormatUtil.formatDate(System.currentTimeMillis())+"Ã¯Â¼Â½.xls";
 		List<Object[]> billList = billEbi.getBillByGoods(bqm);
 		downloadExcel = billEbi.getExcelBill(billList);
 		return "downloadExcelBill";
