@@ -84,22 +84,22 @@ public class OrderModel implements Serializable{
 	 * this public element is a public element
 	 *
 	 */
-	public static final Map<Integer, String> orderTypeMap = new HashMap<Integer, String>();
+	public static final Map<Integer, String> orderTypeMap;
 	/**
 	 * this public element is a public element
 	 *
 	 */
-	public static final Map<Integer, String> buyTypeMap = new TreeMap<Integer, String>();
+	public static final Map<Integer, String> buyTypeMap ;
 	/**
 	 * this public element is a public element
 	 *
 	 */
-	public static final Map<Integer, String> saleTypeMap = new TreeMap<Integer, String>();
+	public static final Map<Integer, String> saleTypeMap;
 	/**
 	 * this public element is a public element
 	 *
 	 */
-	private static final Map<Integer, String> typeMap = new TreeMap<Integer, String>();
+	private static final Map<Integer, String> typeMap;
 	/**
 	 * this public element is a public element
 	 *
@@ -142,6 +142,10 @@ public class OrderModel implements Serializable{
 	public static final String ORDER_ORDERTYPE_OF_RETURN_SALE_VIEW = "ÃƒÂ©Ã¢â‚¬ï¿½Ã¢â€šÂ¬ÃƒÂ¥Ã¢â‚¬ï¿½Ã‚Â®ÃƒÂ©Ã¢â€šÂ¬Ã¢â€šÂ¬ÃƒÂ¨Ã‚Â´Ã‚Â§";
 	
 	static{
+		typeMap = new TreeMap<Integer, String>();
+		saleTypeMap = new TreeMap<Integer, String>();
+		buyTypeMap = new TreeMap<Integer, String>();
+		orderTypeMap = new HashMap<Integer, String>();
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_BUY,ORDER_ORDERTYPE_OF_BUY_VIEW);
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_SALE,ORDER_ORDERTYPE_OF_SALE_VIEW);
 		orderTypeMap.put(ORDER_ORDERTYPE_OF_RETURN_BUY,ORDER_ORDERTYPE_OF_RETURN_BUY_VIEW);
