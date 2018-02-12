@@ -37,8 +37,9 @@ public class SupplierModel implements Serializable{
 	 * this public element is a public element
 	 *
 	 */
-	public static final Map<Integer, String> needsMap = new HashMap<Integer, String>();
+	public static final Map<Integer, String> needsMap;
 	static{
+		needsMap = new HashMap<Integer, String>();
 		needsMap.put(SUPPLIER_NEEDS_OF_YES, SUPPLIER_NEEDS_OF_YES_VIEW);
 		needsMap.put(SUPPLIER_NEEDS_OF_NO, SUPPLIER_NEEDS_OF_NO_VIEW);
 	}
