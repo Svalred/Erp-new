@@ -40,9 +40,10 @@ public class StoreOperModel implements Serializable{
 	 * this public element is a public element
 	 *
 	 */
-	public static final Map<Integer, String> typeMap = new HashMap<Integer, String>();
+	public static final Map<Integer, String> typeMap;
 	
 	static{
+		typeMap = new HashMap<Integer, String>();
 		typeMap.put(STOREOPER_TYPE_OF_IN, STOREOPER_TYPE_OF_IN_VIEW);
 		typeMap.put(STOREOPER_TYPE_OF_OUT, STOREOPER_TYPE_OF_OUT_VIEW);
 	}
