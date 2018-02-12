@@ -249,8 +249,9 @@ public class OrderEbo implements OrderEbi{
 	 * this public element is a public element
 	 *
 	 */
-	public static final Set<Integer> taskTypesSet = new HashSet<Integer>();
+	public static final Set<Integer> taskTypesSet;
 	static{
+		taskTypesSet = new HashSet<Integer>();
 		taskTypesSet.add(OrderModel.ORDER_TYPE_OF_BUY_CHECK_PASS);
 		//taskTypesSet.add(OrderModel.);
 		//taskTypesSet.add(OrderModel.);
